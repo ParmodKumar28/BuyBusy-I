@@ -5,12 +5,14 @@ import Products from "./Pages/App/Products";
 import SignIn from "./Pages/App/SignIn";
 import SignUp from "./Pages/App/SignUp";
 import { CustomProductContext } from "./Context/productsContext";
+import Page404 from "./Pages/Misc/Page 404/Page404";
 
 function App() {
   // Creating router
   const router = createBrowserRouter([
     {path: "/",
       element: <Navbar/>,
+      errorElement: <Page404/>,
       children: [
         {index: true,
           element: 
