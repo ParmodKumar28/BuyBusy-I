@@ -18,12 +18,17 @@ export default function Products(){
             <Loader/>
             ) : (
             <>
+        {/* Search Bar */}
         <div className={styles.searchBarContainer}>
         <input type="search" placeholder="Search By Name" className={styles.searchBar}/>
         </div>
+
+        {/* Search and filter Conatiner */}
         <div className={styles.searchFilterContainer}>
             <Search/>
         </div>
+
+        {/* All products container */}
         <div className={styles.productsContainer}>
             <ProductsList/>
         </div>

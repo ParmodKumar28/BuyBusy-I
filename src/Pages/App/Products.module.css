@@ -2,7 +2,7 @@
 
 /* Serach bar div */
 .searchBarContainer{
-    width: 32%;
+    width: 31%;
     margin: 2rem auto 3.8rem auto;
 }
 
@@ -21,10 +21,9 @@
     outline: #7064E5;
 }
 
-
 /* Left side serach and filter div */
 .searchFilterContainer{
-    width: 15%;
+    width: 16%;
     display: inline-block;
 }
 

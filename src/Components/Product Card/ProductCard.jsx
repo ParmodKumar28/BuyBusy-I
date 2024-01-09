@@ -13,7 +13,7 @@ export default function ProductsCard({id, title, price, description, image}){
             <div className={styles.productTitleContainer}>
             <p className={styles.productTitle}>{title}</p>
             </div>
-            <p className={styles.productPrice}>{`₹ ${price}`}</p>
+            <p className={styles.productPrice}>{`₹ ${price * 80}`}</p>
             <div className={styles.addToCartBtn}>Add To Cart</div>
         </div>
     )
