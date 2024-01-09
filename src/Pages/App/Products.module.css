@@ -1,0 +1,35 @@
+/* Home page Styles */
+
+/* Serach bar div */
+.searchBarContainer{
+    width: 32%;
+    margin: 2rem auto 3.8rem auto;
+}
+
+/* Search bar */
+.searchBar{
+    padding: 12px;
+    font-size: 1.5rem;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #F4F6F8;
+    border: 1px solid #7064E5;
+}
+
+/* Serach bar on focus */
+.searchBar:focus{
+    outline: #7064E5;
+}
+
+
+/* Left side serach and filter div */
+.searchFilterContainer{
+    width: 15%;
+    display: inline-block;
+}
+
+/* In center all products div */
+.productsContainer{
+    width: 70%;
+    display: inline-block;
+}
