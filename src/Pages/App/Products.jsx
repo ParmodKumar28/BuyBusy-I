@@ -8,7 +8,7 @@ import Loader from "../../Components/Loader/Loader";
 // Page for the products
 export default function Products(){
     // Using context
-    const {productsLoading} = useProductContext();
+    const {productsLoading, handleSearchProductByName} = useProductContext();
 
     // Returning Jsx
     return(
@@ -20,7 +20,7 @@ export default function Products(){
             <>
         {/* Search Bar */}
         <div className={styles.searchBarContainer}>
-        <input type="search" placeholder="Search By Name" className={styles.searchBar}/>
+        <input type="search" placeholder="Search By Name" className={styles.searchBar} onChange={(event) => handleSearchProductByName(event)}/>
         </div>
 
         {/* Search and filter Conatiner */}

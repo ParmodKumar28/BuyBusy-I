@@ -17,6 +17,7 @@ export function CustomProductContext({ children }){
     const [filteredProducts, setFilteredProducts] = useState(products);
     const [isFiltered, setIsfiltered] = useState(false);
     const [productsLoading, setProductsLoading] = useState(true);
+    const [searchValue, setSearchValue] = useState("");
     const [selectedPrice, setSelectedPrice] = useState(0);
     const [selectedCategories, setSelectedCategories] = useState([]);
 
@@ -54,19 +55,27 @@ export function CustomProductContext({ children }){
         filteredProducts = products.filter(
           (product) => product.price <= selectedPrice && selectedCategories.includes(product.category)
         );
+      } else if(searchValue){
+        filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchValue));
       } else if (selectedPrice) { 
         filteredProducts = products.filter((product) => product.price <= selectedPrice);
       } else if (selectedCategories.length > 0) {
         filteredProducts = products.filter((product) => selectedCategories.includes(product.category));
       }
       // If price and categories both deselected then setting isFiltered false
-      else if(!selectedPrice && selectedCategories.length === 0)
+      else if(!searchValue && !selectedPrice && selectedCategories.length === 0)
       {
         setIsfiltered(false);
       }
       // Setting the state for filtered products
       setFilteredProducts(filteredProducts);
-    }, [selectedPrice, selectedCategories]);
+    }, [searchValue, selectedPrice, selectedCategories]);
+
+    // Function to handle the search name.
+    const handleSearchProductByName = (event) => {
+      const selectedName = event.target.value.toLowerCase();
+      setSearchValue(selectedName)
+    }
     
 
     // Function to handle price range change
@@ -93,7 +102,16 @@ export function CustomProductContext({ children }){
     // Returning Here
     return(
         // Default Provider
-        <productContext.Provider value={{ products, productsLoading, handlePriceChange, handleCategoryChange, selectedPrice, isFiltered, filteredProducts}}>
+        <productContext.Provider value={{ 
+              products,
+              productsLoading, 
+              handlePriceChange, 
+              handleCategoryChange, 
+              selectedPrice, 
+              isFiltered, 
+              filteredProducts,
+              handleSearchProductByName
+            }}>
             {children}
         </productContext.Provider>
     )
