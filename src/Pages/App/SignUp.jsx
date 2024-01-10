@@ -5,6 +5,6 @@ import Signup from "../../Components/SignUp/Signup";
 export default function SignUp(){
     // Returning Jsx
     return(
-        <Signup />
+        <Signup/>
     )
 }
