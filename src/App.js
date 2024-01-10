@@ -6,6 +6,9 @@ import SignIn from "./Pages/App/SignIn";
 import SignUp from "./Pages/App/SignUp";
 import { CustomProductContext } from "./Context/productsContext";
 import Page404 from "./Pages/Misc/Page 404/Page404";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { CustomUserContext } from "./Context/usersContext";
 
 function App() {
   // Creating router
@@ -14,20 +17,24 @@ function App() {
       element: <Navbar/>,
       errorElement: <Page404/>,
       children: [
-        {index: true,
-          element: 
-            <CustomProductContext>
-            <Products/>
-            </CustomProductContext>
-           },
+        {index: true, element: <Products/>},
         {path: "/signIn", element: <SignIn/>},
         {path: "/signUp", element: <SignUp/>},
-
       ]
     }
   ])
   return (
-    <RouterProvider router={router}/>
+    <>
+    {/* Appling Context Here */}
+    <CustomProductContext>
+      <CustomUserContext>
+        {/* Passing Router */}
+        <RouterProvider router={router}/>
+      </CustomUserContext>
+    </CustomProductContext>
+    {/* Notification Component */}
+    <ToastContainer/>
+    </>
   );
 }
 

@@ -1,5 +1,6 @@
 // Creating products context API here.
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Create Context
 export const productContext = createContext();
@@ -69,7 +70,8 @@ export function CustomProductContext({ children }){
       }
       // Setting the state for filtered products
       setFilteredProducts(filteredProducts);
-    }, [searchValue, selectedPrice, selectedCategories]);
+      // Showing notification
+    }, [products, searchValue, selectedPrice, selectedCategories]);
 
     // Function to handle the search name.
     const handleSearchProductByName = (event) => {
