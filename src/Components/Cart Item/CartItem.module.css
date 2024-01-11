@@ -89,3 +89,44 @@
 .qtyContainer img{
     height: 1.8rem;
 }
+
+/* Mobile devices */
+@media only screen and (max-width: 768px) {
+  .productCardContainer {
+      width: 100%;
+      margin: 1rem; 
+  }
+
+  .imageContainer {
+      height: auto; 
+  }
+
+  .productTitleContainer {
+      height: auto; 
+  }
+
+  .productPrice {
+      margin-bottom: 8px; 
+  }
+
+  .priceAndQtyContainer {
+      margin-bottom: 8px; 
+      flex-direction: column; 
+  }
+
+  .qtyContainer {
+      margin-top: 8px; 
+  }
+
+  .removeFromCartBtn {
+      margin-bottom: 1.2rem; 
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .productCardContainer {
+      width: 45%;
+      margin: 1rem;
+  }
+}
+

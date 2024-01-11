@@ -33,3 +33,52 @@
     width: 70%;
     display: inline-block;
 }
+
+/* Media queries for responsiveness */
+/* Mobile devices */
+@media only screen and (max-width: 768px) {
+    .searchBarContainer {
+        width: 90%;
+        max-width: none;
+        margin: 1rem auto 2rem auto;
+    }
+
+    
+    .searchBar {
+        font-size: 1.3rem;
+    }
+
+    
+    .searchFilterContainer {
+        width: 100%;
+        max-width: none;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+   
+    .productsContainer {
+        width: 100%;
+        max-width: none;
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .searchBarContainer {
+        width: 80%;
+        max-width: none;
+        margin: 1rem auto 2rem auto;
+    }
+
+    .searchFilterContainer {
+        margin: 1rem auto;
+        display: block;
+        width: 80%;
+    }
+    .productsContainer {
+        width: 100%;
+        max-width: none;
+        display: block;
+    }
+  }
