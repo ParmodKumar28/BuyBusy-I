@@ -2,6 +2,8 @@
 
 #folders
 
+/src/Database
+
 # dependencies
 /node_modules
 /.pnp
