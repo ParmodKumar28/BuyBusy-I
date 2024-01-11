@@ -2,15 +2,12 @@
 import { useProductContext } from "../../Context/productsContext";
 import styles from "./Cart.module.css";
 import Loader from "../../Components/Loader/Loader";
-import ProductsList from "../../Components/Products List/ProductsList";
 import CartItem from "../../Components/Cart Item/CartItem";
-import { toast } from "react-toastify";
-import { useEffect } from "react";
 
 // Cart page to show items in the user's cart
 export default function CartPage() {
     // Consuming product context here.
-    const { loading, cartItems, total } = useProductContext();
+    const { loading, cartItems, total, handleOrder } = useProductContext();
 
     // Returning JSX
     return (
@@ -29,7 +26,7 @@ export default function CartPage() {
                             {/* Display total price or other relevant information */}
                             <div className={styles.wrapper}>
                                 <p className={styles.heading}>{`TotalPrice:- ₹${total}/-`}</p>
-                                <button className={styles.purchaseButton}>Purchase</button>
+                                <button className={styles.purchaseButton} onClick={handleOrder}>Purchase</button>
                             </div>
                         </div>
 

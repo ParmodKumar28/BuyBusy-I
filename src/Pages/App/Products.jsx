@@ -8,12 +8,12 @@ import Loader from "../../Components/Loader/Loader";
 // Page for the products
 export default function Products(){
     // Using context
-    const {productsLoading, handleSearchProductByName} = useProductContext();
+    const {loading, handleSearchProductByName} = useProductContext();
     // Returning Jsx
     return(
         <>
         {/* Showing loader while products loads */}
-        { productsLoading ? (
+        { loading ? (
             <Loader/>
             ) : (
             <>

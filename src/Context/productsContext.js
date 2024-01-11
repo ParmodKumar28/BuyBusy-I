@@ -1,5 +1,5 @@
 // Creating products context API here.
-import { addDoc, collection, deleteDoc, doc, onSnapshot, query, updateDoc, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, onSnapshot, query, updateDoc, where } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
 import { db } from "../Database/firebaseConfig";
 import { toast } from "react-toastify";
@@ -20,7 +20,6 @@ export function CustomProductContext({ children }){
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState(products);
     const [isFiltered, setIsfiltered] = useState(false);
-    const [productsLoading, setProductsLoading] = useState(true);
     const [searchValue, setSearchValue] = useState("");
     const [selectedPrice, setSelectedPrice] = useState(0);
     const [selectedCategories, setSelectedCategories] = useState([]);
@@ -45,7 +44,7 @@ export function CustomProductContext({ children }){
 
             // Setting the products state here
             setProducts(productsWithINRPrice);
-            setProductsLoading(false);
+            setLoading(false);
           } catch (error) {
             console.error('Error fetching products:', error);
           }
@@ -190,12 +189,89 @@ export function CustomProductContext({ children }){
           }
         }
 
+        // Handle increase quantity for a product
+        const handleIncreaseQty = async(cartItemId) => {
+          try {
+            const itemRef = doc(collection(db, "cart"), cartItemId);
+            // Fetch the current item data
+            const itemSnapshot = await getDoc(itemRef);
+            const currentItem = itemSnapshot.data();
+
+            // Increment the quantity
+            const updatedQty = currentItem.qty + 1;
+            
+            // Updating item quantity in database
+            await updateDoc(itemRef, {
+              qty: updatedQty 
+            });
+            toast.success("Quantity increased for the item!"); 
+          } catch (error) {
+            console.log(error);
+            toast.error("Something went wrong!");
+          }
+        }
+
+        // Handle decrease quantity for a product
+        const handleDecreaseQty = async(cartItemId) => {
+          try {
+            const itemRef = doc(collection(db, "cart"), cartItemId);
+
+            // Current item
+            const itemSnapshot = await getDoc(itemRef);
+            const currentItem = itemSnapshot.data();
+            
+
+            // Decreasing quantity
+            const updatedQty = currentItem.qty - 1;
+
+            if(updatedQty > 0)
+            {
+            // Updating item quantity in the database
+            await updateDoc(itemRef, {
+              qty: updatedQty
+            });
+            toast.success("Quantity decreased for the item!");
+            }
+            else
+            {
+              handleRemoveFromCart(cartItemId);
+            }
+          } catch (error) {
+            console.log(error);
+            toast.error("Something went wrong!");
+          }
+        }
+
+        // Function to create order here
+        const handleOrder = async() => {
+          try {
+            await addDoc(collection(db, "orders"), {
+              cartItems: cartItems,
+              total: total,
+              user: signedUser,
+              createdAt: new Date()
+            });
+            // Remove items from the cart after a successful order
+            const cartQuery = query(collection(db, "cart"), where('user', '==', signedUser));
+            const cartSnapshot = await getDocs(cartQuery);
+
+            // Delete each item in the cart
+            cartSnapshot.forEach(async (doc) => {
+              await deleteDoc(doc.ref);
+            });
+            toast.success("Order created Successfully"); 
+          } catch (error) {
+            console.log(error);
+            toast.error("Something went wrong!");
+          }
+        }
+
+
     // Returning Here
     return(
         // Default Provider
         <productContext.Provider value={{ 
-              products,
-              productsLoading, 
+              products, 
               handlePriceChange, 
               handleCategoryChange, 
               selectedPrice, 
@@ -206,7 +282,10 @@ export function CustomProductContext({ children }){
               cartItems,
               loading,
               handleRemoveFromCart,
-              total
+              total,
+              handleDecreaseQty,
+              handleIncreaseQty,
+              handleOrder
             }}>
             {children}
         </productContext.Provider>

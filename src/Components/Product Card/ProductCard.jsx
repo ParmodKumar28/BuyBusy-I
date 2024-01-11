@@ -2,12 +2,14 @@
 import styles from "./ProductCard.module.css";
 import { useUserContext } from "../../Context/usersContext";
 import { useProductContext } from "../../Context/productsContext";
+import { useNavigate } from "react-router-dom";
 
 // Functional component for the ProductCard
 export default function ProductsCard({id, title, price, description, image}){
     // Consuming User Context
     const {signedUser} = useUserContext();
     const {handleAddToCart} = useProductContext();
+    const navigate = useNavigate();
 
     // Returning JSX
     return(
@@ -20,7 +22,7 @@ export default function ProductsCard({id, title, price, description, image}){
             </div>
             <p className={styles.productPrice}>{`₹ ${price}`}</p>
             <div className={styles.addToCartBtn}
-                onClick={() => handleAddToCart({id, title, price, description, image}, signedUser)}>
+                onClick={() => signedUser ? handleAddToCart({id, title, price, description, image}, signedUser) : navigate("/signIn")}>
                 Add To Cart
                 </div>
         </div>

@@ -1,12 +1,11 @@
 // Imports
 import styles from "./CartItem.module.css";
-import { useUserContext } from "../../Context/usersContext";
 import { useProductContext } from "../../Context/productsContext";
 
 // Functional component for the ProductCard of cart item
 export default function ProductsCard({cartItemId, title, price, image, qty}){
     // Consuming product context here
-    const {handleRemoveFromCart} = useProductContext();
+    const {handleRemoveFromCart, handleDecreaseQty, handleIncreaseQty} = useProductContext();
 
     // Returning JSX
     return(
@@ -20,9 +19,17 @@ export default function ProductsCard({cartItemId, title, price, image, qty}){
             <div className={styles.priceAndQtyContainer}>
             <p className={styles.productPrice}>{`₹ ${price}`}</p> 
             <span className={styles.qtyContainer}>
-                <img src="https://cdn-icons-png.flaticon.com/128/3388/3388913.png" alt="Remove"/>
+                <img 
+                    onClick={() => handleDecreaseQty(cartItemId)}
+                    src="https://cdn-icons-png.flaticon.com/128/3388/3388913.png"
+                    alt="Remove"
+                />
                 <p>{qty}</p>
-                <img src="https://cdn-icons-png.flaticon.com/128/1828/1828919.png" alt="Add"/>
+                <img 
+                    onClick={() => handleIncreaseQty(cartItemId)} 
+                    src="https://cdn-icons-png.flaticon.com/128/1828/1828919.png" 
+                    alt="Add"
+                />
             </span>
             </div>
             <div className={styles.removeFromCartBtn}

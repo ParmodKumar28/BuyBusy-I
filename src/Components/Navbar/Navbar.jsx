@@ -34,7 +34,7 @@ export default function Navbar(){
                     <>
                     {/* My orders */}
                     <li>
-                    <NavLink to="/" className={styles.navLink}>
+                    <NavLink to="/orders" className={styles.navLink}>
                         <img src="https://cdn-icons-png.flaticon.com/128/6815/6815043.png" alt="My Orders"/>
                         <h3>My Orders</h3>
                     </NavLink>
