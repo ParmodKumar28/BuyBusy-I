@@ -3,7 +3,7 @@ import { useUserContext } from "../../Context/usersContext";
 import styles from "./SignUp.module.css";
 
 // Functional component for the signUp
-export default function Signup(){
+export default function Register(){
     // Consuming User Context
     const {name, email, password, setName, setEmail, setPassword, handleSignUp} = useUserContext();
 
