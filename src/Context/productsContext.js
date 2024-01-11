@@ -1,11 +1,12 @@
 // Creating products context API here.
+// Imports
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, onSnapshot, query, updateDoc, where } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
 import { db } from "../Database/firebaseConfig";
 import { toast } from "react-toastify";
 import { useUserContext } from "./usersContext";
 
-// Create Context
+// Creating Context here
 export const productContext = createContext();
 
 // Custom hooks to use product context

@@ -34,16 +34,16 @@ export default function OrderTable({ order }) {
           {order.cartItems.map((item) => (
             <tr key={item.id}>
               <td>{item.product.title}</td>
-              <td>{item.product.price}</td>
+              <td>{`₹ ${item.product.price}`}</td>
               <td>{item.qty}</td>
-              <td>{item.qty * item.product.price}</td>
+              <td>{`₹ ${item.qty * item.product.price}`}</td>
             </tr>
           ))}
           <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td className={styles.totalRow}>Total: {order.total}</td>
+            <td className={styles.totalRow}>{`₹ ${order.total}`}</td>
           </tr>
         </tbody>
       </table>
