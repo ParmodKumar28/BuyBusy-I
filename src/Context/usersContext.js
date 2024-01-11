@@ -40,7 +40,7 @@ export function CustomUserContext({ children }){
     
         // Clean up the observer when the component unmounts
         return () => unsubscribe();
-    }, []);
+    }, [auth]);
     
     const handleSignUp = async () => {
         try {

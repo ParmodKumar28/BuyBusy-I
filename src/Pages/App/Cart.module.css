@@ -1,0 +1,59 @@
+/* Cart page Styles */
+.noItemsHeading{
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* In left total price */
+.cartTotalContainer{
+    margin-top: 5rem;
+    position: fixed;
+    display: inline-block;
+    width: 15%;
+    margin-right: 16px;      
+    padding: 16px;
+    background-color: #F1F1F1;
+    border-radius: 16px;
+}
+
+/* In center all cart products div */
+.cartItemsContainer{
+    margin: 2rem auto;
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Total wrapper */
+.wrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Total heading */
+.heading{
+    text-align: center;
+    color: #224957;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+}
+
+/* Purchase Button */
+.purchaseButton{
+    width: 160px;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding: 2px;
+    border-radius: 10px;
+    color: white;
+    background-color: #7064E5;
+    border: none;
+    box-shadow: 0px 2px 10px 2px lightgrey;
+}
+

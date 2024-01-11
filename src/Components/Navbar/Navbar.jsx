@@ -2,12 +2,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { useUserContext } from "../../Context/usersContext";
-import { useEffect } from "react";
 
 // Functional component for the Navbar.
 export default function Navbar(){
     // Consuming User Context
-    const {isSignIn, signedUser, handleLogout} = useUserContext();
+    const {isSignIn, handleLogout} = useUserContext();
 
     // Returning JSx
     return(
@@ -43,7 +42,7 @@ export default function Navbar(){
 
                     {/* Cart */}
                     <li>
-                        <NavLink to="/" className={styles.navLink}>
+                        <NavLink to="/cart" className={styles.navLink}>
                         <img src="https://cdn-icons-png.flaticon.com/128/891/891407.png" alt="Cart"/>
                         <h3>Cart</h3>
                     </NavLink>

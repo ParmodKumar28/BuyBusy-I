@@ -9,6 +9,7 @@ import Page404 from "./Pages/Misc/Page 404/Page404";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { CustomUserContext } from "./Context/usersContext";
+import CartPage from "./Pages/App/Cart";
 
 function App() {
   // Creating router
@@ -20,18 +21,19 @@ function App() {
         {index: true, element: <Products/>},
         {path: "/signIn", element: <SignIn/>},
         {path: "/signUp", element: <SignUp/>},
+        {path: "/cart", element: <CartPage/>}
       ]
     }
   ])
   return (
     <>
     {/* Appling Context Here */}
-    <CustomProductContext>
-      <CustomUserContext>
+    <CustomUserContext>
+      <CustomProductContext>
         {/* Passing Router */}
         <RouterProvider router={router}/>
-      </CustomUserContext>
-    </CustomProductContext>
+      </CustomProductContext>
+    </CustomUserContext>
     {/* Notification Component */}
     <ToastContainer/>
     </>

@@ -1,0 +1,54 @@
+// Imports
+import { useProductContext } from "../../Context/productsContext";
+import styles from "./Cart.module.css";
+import Loader from "../../Components/Loader/Loader";
+import ProductsList from "../../Components/Products List/ProductsList";
+import CartItem from "../../Components/Cart Item/CartItem";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
+
+// Cart page to show items in the user's cart
+export default function CartPage() {
+    // Consuming product context here.
+    const { loading, cartItems, total } = useProductContext();
+
+    // Returning JSX
+    return (
+        <>
+            {loading ? (
+                <Loader />
+            ) : (
+                cartItems.length === 0 ? (
+                    <>
+                    <h1 className={styles.noItemsHeading}>No items in the cart!</h1>  
+                    </>
+                ) : (
+                    <>
+                        {/* Total Price */}
+                        <div className={styles.cartTotalContainer}>
+                            {/* Display total price or other relevant information */}
+                            <div className={styles.wrapper}>
+                                <p className={styles.heading}>{`TotalPrice:- ₹${total}/-`}</p>
+                                <button className={styles.purchaseButton}>Purchase</button>
+                            </div>
+                        </div>
+
+                        {/* Cart Products List */}
+                        <div className={styles.cartItemsContainer}>
+                            {cartItems.map((item) => (
+                                <CartItem 
+                                    key={item.id} 
+                                    cartItemId={item.id} 
+                                    title={item.product.title} 
+                                    price={item.product.price} 
+                                    image={item.product.image}
+                                    qty={item.qty}
+                                />
+                            ))}
+                        </div>
+                    </>
+                )
+            )}
+        </>
+    );
+}
