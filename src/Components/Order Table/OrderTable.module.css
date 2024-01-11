@@ -45,3 +45,7 @@
 .orderTable tr:nth-child(odd) {
     background-color: #EBF5FB;
 }
+
+.totalRow{
+    font-weight: bolder;
+}

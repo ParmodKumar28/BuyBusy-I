@@ -7,12 +7,12 @@ import CartItem from "../../Components/Cart Item/CartItem";
 // Cart page to show items in the user's cart
 export default function CartPage() {
     // Consuming product context here.
-    const { loading, cartItems, total, handleOrder } = useProductContext();
+    const { cartLoading, cartItems, total, handleOrder } = useProductContext();
 
     // Returning JSX
     return (
         <>
-            {loading ? (
+            {cartLoading ? (
                 <Loader />
             ) : (
                 cartItems.length === 0 ? (

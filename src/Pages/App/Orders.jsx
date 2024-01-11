@@ -6,14 +6,17 @@ import { db } from "../../Database/firebaseConfig";
 import { useUserContext } from "../../Context/usersContext";
 import { toast } from "react-toastify";
 import OrderTable from "../../Components/Order Table/OrderTable";
+import Loader from "../../Components/Loader/Loader";
+import { useProductContext } from "../../Context/productsContext";
 
 // Component for the order page
 export default function OrderPage(){
     // States
     const [orders, setOrders] = useState([]);
 
-    // Consuming user context here
+    // Consuming user produuct context here
     const {signedUser} = useUserContext();
+    const {orderLoading, setOrderLoading} = useProductContext();
 
     // Fetching orders
     useEffect(() => {
@@ -30,6 +33,7 @@ export default function OrderPage(){
 
                     // Setting orders state
                     setOrders(orderData);
+                    setOrderLoading(false);
                     // toast.success("You Orders!");
 
                     return () => unsubscribe();
@@ -41,15 +45,19 @@ export default function OrderPage(){
         }
 
         fetchData();
-    }, [signedUser]);
+    }, [signedUser, setOrderLoading]);
 
     // Returning JSX
     return(
+        <>
+        {orderLoading ? <Loader/> : (
         <>
         <h1 style={{margin:"2rem", textAlign:"center", color:" #7064E5"}}>{orders.length === 0 ? "You have no orders still!" : "Your Orders"}</h1>
         {orders.length > 0 && orders.map((order, i) => (
             <OrderTable key={i} order={order}/>
         ))}
+        </>
+        )}
         </>
     )
 }

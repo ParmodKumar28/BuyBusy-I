@@ -21,10 +21,10 @@ export default function ProductsCard({id, title, price, description, image}){
             <p className={styles.productTitle}>{title}</p>
             </div>
             <p className={styles.productPrice}>{`₹ ${price}`}</p>
-            <div className={styles.addToCartBtn}
+            <button className={styles.addToCartBtn}
                 onClick={() => signedUser ? handleAddToCart({id, title, price, description, image}, signedUser) : navigate("/signIn")}>
                 Add To Cart
-                </div>
+                </button>
         </div>
     )
 }

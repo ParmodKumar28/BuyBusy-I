@@ -23,10 +23,12 @@ export function CustomProductContext({ children }){
     const [searchValue, setSearchValue] = useState("");
     const [selectedPrice, setSelectedPrice] = useState(0);
     const [selectedCategories, setSelectedCategories] = useState([]);
+    const [productLoading, setProductLoading] = useState(true);
     // Carts
     const [cartItems, setCartItems] = useState([]);
     const [total, setTotal] = useState(0);
-    const [loading, setLoading] = useState(true);
+    const [cartLoading, setcartLoading] = useState(true);
+    const [orderLoading, setOrderLoading] = useState(true);
     // Consuming user context for fetching user cart items.
     const {signedUser} = useUserContext();
 
@@ -44,7 +46,7 @@ export function CustomProductContext({ children }){
 
             // Setting the products state here
             setProducts(productsWithINRPrice);
-            setLoading(false);
+            setProductLoading(false);
           } catch (error) {
             console.error('Error fetching products:', error);
           }
@@ -129,7 +131,7 @@ export function CustomProductContext({ children }){
                       setCartItems(cartData);
                       if(cartItems)
                       {
-                        setLoading(false);
+                        setcartLoading(false);
                       }
 
                       // Calculating total and setting to total state
@@ -271,7 +273,8 @@ export function CustomProductContext({ children }){
     return(
         // Default Provider
         <productContext.Provider value={{ 
-              products, 
+              products,
+              productLoading, 
               handlePriceChange, 
               handleCategoryChange, 
               selectedPrice, 
@@ -280,12 +283,14 @@ export function CustomProductContext({ children }){
               handleSearchProductByName,
               handleAddToCart,
               cartItems,
-              loading,
+              cartLoading,
               handleRemoveFromCart,
               total,
               handleDecreaseQty,
               handleIncreaseQty,
-              handleOrder
+              handleOrder,
+              orderLoading,
+              setOrderLoading
             }}>
             {children}
         </productContext.Provider>

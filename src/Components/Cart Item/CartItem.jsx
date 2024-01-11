@@ -32,10 +32,10 @@ export default function ProductsCard({cartItemId, title, price, image, qty}){
                 />
             </span>
             </div>
-            <div className={styles.removeFromCartBtn}
+            <button className={styles.removeFromCartBtn}
                 onClick={() => handleRemoveFromCart(cartItemId)}>
                 Remove From Cart
-                </div>
+                </button>
         </div>
     )
 }

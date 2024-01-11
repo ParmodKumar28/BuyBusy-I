@@ -40,7 +40,10 @@ export default function OrderTable({ order }) {
             </tr>
           ))}
           <tr>
-            <td colSpan="4">Total: {order.total}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td className={styles.totalRow}>Total: {order.total}</td>
           </tr>
         </tbody>
       </table>
