@@ -4,7 +4,7 @@ import styles from "./SignIn.module.css";
 import { useUserContext } from "../../Context/usersContext";
 
 // Functional component for the signin
-export default function Signin(){
+export default function Login(){
     // Consuming User Context
     const {email, password, setEmail, setPassword, handleSignIn} = useUserContext();
 

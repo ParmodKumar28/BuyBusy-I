@@ -1,10 +1,10 @@
 // Imports
-import Signin from '../../Components/SignIn/Signin';
+import Login from "../../Components/Login/Login"
 
 // Page for the signin the user.
 export default function SignIn(){
     // Returning Jsx
     return(
-        <Signin/>   
+        <Login/>   
     )
 }
