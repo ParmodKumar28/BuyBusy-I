@@ -11,3 +11,20 @@ html,body{
     height: 100%;
     font-family: 'Quicksand', sans-serif;
 }
+
+/* Custom styles for Toastify notifications */
+/* Adjust styles for smaller screens */
+@media only screen and (max-width: 768px) {
+    .Toastify__toast-container {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .Toastify__toast {
+      margin: 2rem 0 0 4rem;
+      width: 80%;
+      border-radius: 0;
+    }
+  }
+  
