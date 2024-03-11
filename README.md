@@ -7,7 +7,7 @@ Busy Buy is an e-commerce web application built with React. It allows users to s
 - User authentication (Sign Up, Sign In, Logout)
 - Product browsing and filtering
 - Shopping cart functionality
-- Order history tracking
+- Order history tracking feature
 
 ## Project Structure
 
